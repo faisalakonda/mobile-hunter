@@ -7,7 +7,14 @@ const loadPhones = async (searchText) => {
 const displayPhones = phones => {
   const phoneContainer = document.getElementById('phone-container');
   phoneContainer.innerText = '';
-  phones = phones.slice(0,21);
+  const showAll = document.getElementById('show-all');
+  if(phones.length > 10) {
+    phones = phones.slice(0,10);
+    showAll.classList.remove('d-none');
+  }
+  else{
+    showAll.classList.add('d-none');
+  }
   const noPhone = document.getElementById('no-phone-found');
   if(phones.length === 0) {
     noPhone.classList.remove('d-none')
